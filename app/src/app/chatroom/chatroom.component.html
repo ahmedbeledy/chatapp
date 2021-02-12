@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chat App</title>
+</head>
+
+<body>
+    <div class="chat">
+        <div id="sidebar" class="chat__sidebar">
+            <div class="message">
+<h2>users</h2>                <div *ngFor="let item of this.room">
+                    <div *ngFor="let value of item.users">
+                        <span class="message__name">{{value.username}}</span>
+                    </div>
+
+                </div>
+              
+            </div>
+        </div>
+        <div class="chat__main">
+            <div id="messages" class="chat__messages">
+                <div *ngFor="let item of this.message" class="message">
+                    <p>
+                        <span class="message__name">{{item.username}}</span>
+                        <span class="message__meta">{{item.createdAt| date:"HH:mm"}}</span>
+                    </p>
+                    <p>{{item.text}}</p>
+                </div>
+
+            </div>
+
+
+            <div class="compose">
+                <input  #data placeholder="Message" required autocomplete="off"    (keydown.enter)="sendmessage(data.value)">
+
+                <button  
+                (click)="sendmessage(data.value)">Send</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
